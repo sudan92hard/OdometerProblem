@@ -84,6 +84,17 @@ public class ProceduralOdometer {
              readings.add(endReading);
             return readings;
         }
+        
+        static String getNthDistance(String startReading, int N)
+        {
+             String reading;            
+             while(N != 0)
+             {
+                 reading = getNextReading(startReading);
+                 N--;
+             }
+            return reading;
+        }
 	
 	public static void main(String args[]){
 		int digits = 4;
