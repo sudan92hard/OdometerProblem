@@ -95,4 +95,19 @@ public class ProceduralOdometer {
 		//System.out.println(new String(charArrayDistance));
 		return new String(charArrayDistance);
 	}
+	
+	static List<String> getListOfReadings(String startReading, String endReading)
+        {
+             List<String> readings = new ArrayList<String>();
+             if(!isValidDistance(startReading) || !isValidDistance(endReading))
+             {
+                 return readings;
+             }
+             while(Integer.parseInt(startReading) <= Integer.parseInt(endReading)) 
+             {
+                 readings.add(startReading);
+                 startReading = getNextReading(startReading);
+             }
+            return readings;
+        }
 }
