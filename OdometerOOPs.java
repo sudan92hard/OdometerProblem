@@ -11,7 +11,7 @@ class Odometer{
         Integer maxValue;
 
 	Odometer(int numOfDigits ){
-		this.numOfDigits = numOfDigits;
+		this.numOfDigits = numOfDigits;                
 		digits = getMinValue(numOfDigits);
                 minValue = odometerToNumber(this.getMinValue(this.numOfDigits));
 		maxValue = odometerToNumber(this.getMaxValue(this.numOfDigits));
@@ -144,7 +144,10 @@ public class OdometerProblem {
                 System.out.println("Number of digits : ");
                 Scanner sc = new Scanner(System.in);
                 int numOfDigits = sc.nextInt();
-                
+                if(numOfDigits > 10 || numOfDigits < 1){
+                    System.out.println("Invalid number of digits");
+                    return;
+                }
                 System.out.println("Odometer start value : ");
 		
                 Odometer odometer = new Odometer(numOfDigits);
