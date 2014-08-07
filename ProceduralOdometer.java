@@ -36,6 +36,13 @@ public class ProceduralOdometer {
 
 	public static String getNextReading(String distance)
 	{
+		if(!isValidDistance(distance))
+			return "Invalid Distance";
+		
+		
+		if(distance.equals(getMaximumDistance(distance.length())))
+			return "";
+			
 		int numOfDigits = distance.length();
 		char[] charArrayDistance = distance.toCharArray();
 		
