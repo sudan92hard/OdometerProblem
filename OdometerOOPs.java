@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Odometer{
-	ArrayList<Digit> digits;
+	public static ArrayList<Digit> digits;
 	int numOfDigits;
 	
 	Odometer(int numOfDigits ){
 		this.numOfDigits = numOfDigits;
-		digits = getMinimumValue(numOfDigits);
+		digits = getMinValue(numOfDigits);
 	}
 	
 	boolean isAscendingCondition(ArrayList<Digit > digits){
@@ -110,9 +110,11 @@ public class OdometerProblem {
 	
 	public static void main(String[] args) {
 		
-		int numOfDigits = Integer.parseInt(args[1]);
+		//int numOfDigits = Integer.parseInt(args[1]);
+		int numOfDigits = 4;
 		Odometer odometer = new Odometer(numOfDigits);
-		//System.out.println(getAllValues(Odometer));
+		System.out.println(odometer.digits.toString());
+		System.out.println(odometer.getNextValue().toString());
 	}
 
 }
