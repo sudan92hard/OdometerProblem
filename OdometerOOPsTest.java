@@ -1,12 +1,16 @@
-import junit.framework.TestCase;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import static org.junit.Assert.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-public class OdometerTest extends TestCase {
+
+public class OdometerProblemTest {
+	
 	ArrayList<Object> list1;
 	ArrayList<Object> list2;
 	ArrayList<Object> list3;
@@ -19,7 +23,7 @@ public class OdometerTest extends TestCase {
 		int index = 0;
 		while((line = br.readLine()) != null)
 		{
-			System.out.println(index++);
+			//System.out.println(index++);
 			String s[] = line.split(";");
 			String inp[] = s[0].split(" ");
 			//String output = s[1].replaceAll(" ", "");
@@ -78,42 +82,59 @@ public class OdometerTest extends TestCase {
 		}
 		br.close();
 	}
-	
 
-	protected void setUp() throws Exception {
-		//super.setUp();
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
 		testFileIsAscending();
 		testFileMaxValue();
 		testFileMinValue();
 	}
 
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
 	public void testIsAscendingCondition() {
-		Odometer odometer = new Odometer(0);
-		
+		Odometer odometer = new Odometer(0);		
 		for(int i = 0; i < list1.size() -1; i += 2){
 			ArrayList<Integer> numbers = (ArrayList<Integer>) list1.get(i);
 			ArrayList<Digit> digits = new ArrayList<Digit>();
 			for(int k = 0; k < numbers.size(); k++){
-				digits.add(new Digit(numbers.get(i)));
+				digits.add(new Digit(numbers.get(k)));
 			}
 			String output = (String) list1.get(i+ 1);
 			assertEquals(Boolean.parseBoolean(output), odometer.isAscendingCondition(digits));
 		}
 	}
 
-	/*public void testGetMinValue() {
+	@Test
+	public void testGetMinValue() {
 		Odometer odometer = new Odometer(0);
 		for(int i = 0; i < list3.size() -1; i += 2){
 			int input = (int) list3.get(i);
 			ArrayList<Integer> numbers = (ArrayList<Integer>) list3.get(i + 1);
 			ArrayList<Digit> digits = new ArrayList<Digit>();
 			for(int k =0; k < numbers.size(); k++){
-				digits.add(new Digit(numbers.get(i)));
+				digits.add(new Digit(numbers.get(k)));
 			}
-			assertEquals(digits, odometer.getMaxValue(input));
+			ArrayList<Digit> out = odometer.getMaxValue(input);
+			for(int j = 0; j < digits.size(); j++){
+				assertEquals(digits.get(j).getValue(), out.get(j).getValue());
+			}
+			//assertEquals(digits, odometer.getMaxValue(input));
 		}
 	}
 
+	@Test
 	public void testGetMaxValue() {
 		Odometer odometer = new Odometer(0);
 		for(int i = 0; i < list2.size() -1; i += 2){
@@ -121,22 +142,29 @@ public class OdometerTest extends TestCase {
 			ArrayList<Integer> numbers = (ArrayList<Integer>) list2.get(i + 1);
 			ArrayList<Digit> digits = new ArrayList<Digit>();
 			for(int k =0; k < numbers.size(); k++){
-				digits.add(new Digit(numbers.get(i)));
+				digits.add(new Digit(numbers.get(k)));
 			}
-			assertEquals(digits, odometer.getMaxValue(input));
+			ArrayList<Digit> out = odometer.getMaxValue(input);
+			for(int j = 0; j < digits.size(); j++){
+				assertEquals(digits.get(j).getValue(), out.get(j).getValue());
+			}
+			//assertEquals(digits, odometer.getMaxValue(input));
 		}
-	}*/
+	}
 
-	/*public void testGetNextValue() {
+	@Test
+	public void testGetNextValue() {
 		fail("Not yet implemented");
 	}
 
+	@Test
 	public void testNumberToDigit() {
 		fail("Not yet implemented");
 	}
 
+	@Test
 	public void testDigitToNumber() {
 		fail("Not yet implemented");
-	}*/
+	}
 
 }
