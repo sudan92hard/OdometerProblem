@@ -13,10 +13,18 @@ class Odometer{
 	Odometer(int numOfDigits ){
 		this.numOfDigits = numOfDigits;
 		digits = getMinValue(numOfDigits);
-                minValue = odometerToNumber(this.getMinValue(this.numOfDigits), this.numOfDigits);
-		maxValue = odometerToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits);
+                minValue = odometerToNumber(this.getMinValue(this.numOfDigits));
+		maxValue = odometerToNumber(this.getMaxValue(this.numOfDigits));
 	}
-
+        public String toString(){
+            String s = "";
+            for(Digit d: digits)
+                    {
+                        s += "" + d.getValue();
+                    }
+            return s;
+        }
+        
 	boolean isAscendingCondition(ArrayList<Digit > digits){
 
 		for(int i = 0; i < digits.size() - 1; i++ )
@@ -56,10 +64,10 @@ class Odometer{
 	ArrayList<Digit> getNextValue(){
 
 		Integer number;
-		number = odometerToNumber(digits,this.numOfDigits);
+		number = odometerToNumber(digits);
                 number++;
 
-		while(!isAscendingCondition(numberToDigits(number)))
+		while(!isAscendingCondition(numberToOdometer(number)))
 		{
                     number++;
                     
@@ -69,12 +77,12 @@ class Odometer{
                     }
 		}
                
-		digits = new ArrayList<Digit >(numberToDigits(number));
+		digits = new ArrayList<Digit >(numberToOdometer(number));
 
 		return digits;
 	}
 
-	ArrayList<Digit> numberToDigits(Integer number){
+	ArrayList<Digit> numberToOdometer(Integer number){
 
 		ArrayList<Digit> digit = new ArrayList<Digit>();
 		while(number > 0){
@@ -94,7 +102,7 @@ class Odometer{
 		return digit;
 	}
 
-	Integer odometerToNumber(ArrayList<Digit> digit,int numOfDigits){
+	Integer odometerToNumber(ArrayList<Digit> digit){
 
 		Integer number = new Integer(0);
 
@@ -136,19 +144,10 @@ public class OdometerProblem {
 		System.out.println("Number of odometer values : ");
                 Scanner s = new Scanner(System.in);
                 int printList = s.nextInt();
-               
-                for(Digit d: odometer.digits)
-		{
-			System.out.print(d.getValue());
-		}
-                System.out.println();
                 while(printList != 0)
                 {
-                    for(Digit d: odometer.getNextValue())
-                    {
-                        System.out.print(d.getValue());
-                    }
-                    System.out.println();
+                    odometer.getNextValue();
+                    System.out.println(odometer);
                     printList--;
                 }
 
