@@ -24,6 +24,9 @@ class Odometer{
 	int getMaxValue(){
 		
 	}
+	String getAllValues(){
+		
+	}
 }
 
 class Digit{
@@ -43,7 +46,10 @@ public class OdometerProblem {
 
 	
 	public static void main(String[] args) {
+		
 		int numOfDigits = Integer.parseInt(args[1]);
+		Odometer odometer = new Odometer(numOfDigits);
+		System.out.println(odometer.getAllValues());
 	}
 
 }
