@@ -34,17 +34,19 @@ class Odometer{
 		return dgt;
 	}
 		
-	ArrayList<Digit > getMaxValue(int numOfDigits){
+		ArrayList<Digit > getMaxValue(int numOfDigits){
 		ArrayList<Digit> dgt = new ArrayList<Digit>();
 		int j = 9;
 		for ( int i = 0; i < numOfDigits ; i++){
 			Digit d = new Digit(j--);
 			dgt.add(d);
-		}
-		
+			}
 		Collections.reverse(dgt);
-		return dgt; 
+		return dgt;
+		
+
 	}
+	
 	
 	ArrayList<Digit> getNextValue(){
 		
