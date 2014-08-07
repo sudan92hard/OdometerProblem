@@ -52,7 +52,7 @@ class Odometer{
 		return dgt;
 	}
 
-	ArrayList<Digit > getMaxValue(int numOfDigits){
+	ArrayList<Digit> getMaxValue(int numOfDigits){
 		ArrayList<Digit> dgt = new ArrayList<Digit>();
 		int j = 9;
 		for ( int i = 0; i < numOfDigits ; i++){
@@ -72,11 +72,13 @@ class Odometer{
                 
 		while(!isAscendingCondition(numberToOdometer(number)))
 		{
-                    number++;
                     
                     if(number >= maxValue)
                     {
                         number = minValue;
+                    }
+                    else{
+                        number++;
                     }
 		}
                 
@@ -97,7 +99,7 @@ class Odometer{
 
 		}
 
-		if((digit.size() - 1) != this.numOfDigits)
+		if(digit.size() + 1 == this.numOfDigits)
 		{
 			digit.add(new Digit(0));
 		}
@@ -156,7 +158,6 @@ public class OdometerProblem {
                 while(printList != 0)
                 {
                     odometer.getNextValue();
-                    odometerVal++;
                     System.out.println(odometer);
                     printList--;
                 }
