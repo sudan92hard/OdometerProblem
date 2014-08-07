@@ -13,7 +13,7 @@ class Odometer{
 		 
 		for(int i = 0; i < digits.size() - 1; i++ )
 		{
-			if(digits.get(i).getValue() > digits.get(i + 1).getValue())
+			if(digits.get(i).getValue() >= digits.get(i + 1).getValue())
 			{
 				return false;
 			}
@@ -35,12 +35,40 @@ class Odometer{
 		
 	}
 	
+	ArrayList<Digit> numberToDigit(Integer number,int numOfDigits){
+		
+		ArrayList<Digit> digit = new ArrayList<Digit>();
+		while(number > 0){
+			
+			Digit d = new Digit(number % 10);
+			digit.add(d);
+			number = number / 10;
+			
+		}
+		Collections.reverse(digit);
+		
+		return digit;
+	}
+	
+	Integer digitToNumber(ArrayList<Digit> digit,int numOfDigits){
+		
+		Integer number = new Integer(0);
+		
+		for(Digit dgt: digit)
+		{
+			number = number * 10 + dgt.getValue();
+		}
+		
+		return number;
+		
+	}
+	
 }
 
 class Digit{
 	int value;
 	Digit(int value){
-		this.value = value % 10;
+		this.value = value;
 	}
 	
 	int getValue(){
