@@ -11,10 +11,10 @@ public class ProceduralOdometer {
 
 	public static void main(String args[]){
 		int digits = Integer.parseInt(args[1]);
-		int minimunDistance = getMinimunDistance(digits);
-		int maximumDistance = getMaximumDistance(digits);
-		int nextDistance = getNextDistance(minimumDistance);
-		ArrayList< Integer > = getListOfDistance(minimumDistance,maximumDistance);
+		String minimunDistance = getMinimunDistance(digits);
+		String maximumDistance = getMaximumDistance(digits);
+		String nextDistance = getNextDistance(minimumDistance);
+		ArrayList< String > = getListOfDistance(minimumDistance,maximumDistance);
 	}
 	
 	public static boolean isValidDistance(String number){
