@@ -61,14 +61,6 @@ public class ProceduralOdometer {
 	
 	public static String getNextDistance(String distance)
 	{
-		/*if(!isValidDistance(distance))
-			return "Invalid String";
-		*/
-		
-		/*if(distance.equals(getMaximumDistance(distance)))
-			return "";
-		*/
-		
 		int numOfDigits = distance.length();
 		char[] charArrayDistance = distance.toCharArray();
 		
@@ -92,7 +84,7 @@ public class ProceduralOdometer {
 			}
 			
 		}
-		//System.out.println(new String(charArrayDistance));
+	
 		return new String(charArrayDistance);
 	}
 	
