@@ -9,7 +9,17 @@ class Odometer{
 		digits = getMinimumValue(numOfDigits);
 	}
 	
-	boolean isAscendingCondition(){
+	boolean isAscendingCondition(ArrayList<Digit > digits){
+		 
+		for(int i = 0; i < digits.size() - 1; i++ )
+		{
+			if(digits.get(i).getValue() > digits.get(i + 1).getValue())
+			{
+				return false;
+			}
+		}
+		
+		return true;
 		
 	}
 	
