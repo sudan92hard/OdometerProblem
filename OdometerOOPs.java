@@ -71,6 +71,12 @@ class Odometer{
 			number = number / 10;
 			
 		}
+		
+		if((digit.size() - 1) != this.numOfDigits)
+		{
+			digit.add(new Digit(0));
+		}
+		
 		Collections.reverse(digit);
 		return digit;
 	}
@@ -124,6 +130,7 @@ public class OdometerProblem {
 		{
 			System.out.print(d.getValue());
 		}
+		System.out.println();
 	}
 
 }
