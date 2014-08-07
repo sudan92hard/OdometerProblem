@@ -92,30 +92,9 @@ class Odometer{
 		{
 			number = number * 10 + dgt.getValue();
 		}
-
-		//System.out.println(number);
-
 		return number;
 
 	}
-
-	/*public void printList(){
-		
-		Integer number1 = new Integer(digitToNumber(this.getMinValue(numOfDigits),this.numOfDigits));
-		Integer maxValue = new Integer(digitToNumber(this.getMaxValue(numOfDigits), this.numOfDigits));
-		
-		while(number1 != maxValue && )
-		{
-			number1 = this.digitToNumber(nextValue, this.numOfDigits);
-			
-			for(Digit d: nextValue)
-			{
-				System.out.print(d.getValue());
-			}
-			System.out.println();
-		}
-	}*/
-
 }
 
 class Digit{
@@ -146,7 +125,7 @@ public class OdometerProblem {
 			System.out.print(d.getValue());
 		}
 		System.out.println();
-		//odometer.printList();
+		
 		for(Digit d: odometer.getNextValue())
 		{
 			System.out.print(d.getValue());
