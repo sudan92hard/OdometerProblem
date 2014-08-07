@@ -33,6 +33,16 @@ class Odometer{
 	
 	ArrayList<Digit> getNextValue(){
 		
+		Integer number;
+		number = digitToNumber(digits,this.numOfDigits);
+		while(!isAscendingCondition(numberToDigit(number)))
+		{
+			number ++;
+			digits = numberToDigit(number);
+		}
+		 
+		return digits;
+		
 	}
 	
 	ArrayList<Digit> numberToDigit(Integer number,int numOfDigits){
