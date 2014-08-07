@@ -4,3 +4,8 @@ getMinimumDistancePossible(int numOfDigit);
 getMaximumDistancePossible(int numOfDigit);
 getNextReading(int previousReading);
 getListOfReadings(int startReading, int numOfReadings);
+getReadingsUptoNKm(String startReading, int numOfReading);
+
+Functionalities[5] have been implemented. Test cases are being written.
+
+Extimated time to complete : 1 hr
