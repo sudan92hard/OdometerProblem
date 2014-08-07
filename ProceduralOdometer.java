@@ -15,6 +15,7 @@ public class ProceduralOdometer {
 		String maximumDistance = getMaximumDistance(digits);
 		String nextDistance = getNextDistance(minimumDistance);
 		ArrayList< String > = getListOfDistance(minimumDistance,maximumDistance);
+		List<String> readingsList = getReadingsUptoNKm(String startReading, int numOfReading);
 	}
 	
 	public static boolean isValidDistance(String number){
@@ -47,5 +48,14 @@ public class ProceduralOdometer {
 			number += (10 - i);
 		}		
 		return number;
+	}
+	public static List<String> getReadingsUptoNKm(String startReading, int numOfReading){
+		List<String> readings = new ArrayList<String>();
+		for(int i = 0; i < numOfReading; i++){
+			readings.add(startReading);
+			startReading = getNextReading(startReading);
+			
+		}
+		return readings;
 	}
 }
