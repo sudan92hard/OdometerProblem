@@ -8,4 +8,21 @@ getReadingsUptoNKm(String startReading, int numOfReading);
 
 Functionalities(5) have been implemented. Test cases are being written.
 
-Estimated time to complete testing : 1 hr
+Test cases for all methods have been done and integrated.
+
+
+Source Code File : ProceduralOdometer.java
+Test Cases File : ProceduralOdometerTest.java
+
+Required Input Test Case Files :
+ 1. inputRange
+ 2. valid
+ 3. maximum
+ 4. minimum
+ 5. getNextDistanceInput
+ 6. getNextDistanceExpectedOutput
+ 
+ 
+ 
+ 
+ 
