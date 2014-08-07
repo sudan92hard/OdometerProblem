@@ -24,4 +24,28 @@ public class ProceduralOdometer {
 		}
 		return true;
 	}
+	
+	public static String getMinimumDistance(int digits){
+		if(digits <= 0 || digits > 10)
+			return "";
+		
+		String number = "";
+		
+		for(int i = 0; i < digits; i++){
+			number += i;
+		}		
+		return number;
+	}
+	
+	public static String getMaximumDistance(int digits){
+		if(digits <= 0 || digits > 10)
+			return "";
+		
+		String number = "";
+		
+		for(int i = digits; i > 0; i--){
+			number += (10 - i);
+		}		
+		return number;
+	}
 }
