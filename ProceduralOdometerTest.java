@@ -44,5 +44,31 @@ public class ProceduralOdometerTest {
  			assertEquals(tokens[1], ProceduralOdometer.getMaximumDistance(Integer.parseInt(tokens[0])));
  		}
 	}
+	
+	@Test
+	public void testgetNextDistance() throws IOException {
+		ProceduralOdometer odometerObj = new ProceduralOdometer();
+		
+		ArrayList <String> getNextDistanceInput = new ArrayList<String>();
+		ArrayList <String> getNextDistanceExpectedOutput = new ArrayList<String>();
+		BufferedReader br = new BufferedReader(new FileReader("getNextDistanceInput.txt"));
+		String line;
+	    	while((line = br.readLine()) != null)
+	    	{
+	    		getNextDistanceInput.add(line);
+	    	}
+	    	
+	    	br = new BufferedReader(new FileReader("getNextDistanceExpectedOutput.txt"));
+			while((line = br.readLine()) != null)
+	    	{
+				getNextDistanceExpectedOutput.add(line);
+	    	}
+		
+		for(int i = 0 ; i < getNextDistanceInput.size() ; i++)
+		{
+			//System.out.println(getNextDistanceExpectedOutput.get(i) + "  " + odometerObj.getNextDistance(getNextDistanceInput.get(i)));
+			assertTrue(getNextDistanceExpectedOutput.get(i).equals(odometerObj.getNextDistance(getNextDistanceInput.get(i))));
+		}
+	}
 
 }
