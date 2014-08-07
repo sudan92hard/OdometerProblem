@@ -1,0 +1,4 @@
+1 4 9; true
+1 2 3; true
+3; true
+9 8 7; false
