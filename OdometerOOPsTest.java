@@ -126,7 +126,7 @@ public class OdometerProblemTest {
 			for(int k =0; k < numbers.size(); k++){
 				digits.add(new Digit(numbers.get(k)));
 			}
-			ArrayList<Digit> out = odometer.getMaxValue(input);
+			ArrayList<Digit> out = odometer.getMinValue(input);
 			for(int j = 0; j < digits.size(); j++){
 				assertEquals(digits.get(j).getValue(), out.get(j).getValue());
 			}
@@ -152,19 +152,6 @@ public class OdometerProblemTest {
 		}
 	}
 
-	@Test
-	public void testGetNextValue() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNumberToDigit() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDigitToNumber() {
-		fail("Not yet implemented");
-	}
+	
 
 }
