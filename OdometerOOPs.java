@@ -1,32 +1,30 @@
+import java.util.ArrayList;
+
 class Odometer{
-	Digit[] digits;
+	ArrayList<Digit> digits;
 	int numOfDigits;
 	
 	Odometer(int numOfDigits ){
 		this.numOfDigits = numOfDigits;
+		digits = getMinimumValue(numOfDigits);
 	}
-	boolean CompareDigits(Digit d1, Digit d2){
+	
+	boolean isAscendingCondition(){
 		
 	}
-	int getNextValue( int distance){
-		
-		
-	}
-	int convertToNumber(Digit[] d){
+	
+	ArrayList<Digit> getMinValue(int numOfDigits){
 		
 	}
-	void convertToDigitsAndUpdate(int num){
+		
+	ArrayList<Digit > getMaxValue(int numOfDigits){
 		
 	}
-	int getMinimumValue(){
+	
+	ArrayList<Digit> getNextValue(){
 		
 	}
-	int getMaxValue(){
-		
-	}
-	String getAllValues(){
-		
-	}
+	
 }
 
 class Digit{
@@ -38,7 +36,9 @@ class Digit{
 	int getValue(){
 		return value;
 	}
-	void setValue(){}
+	void setValue(int value){
+		this.value = value;
+	}
 	
 }
 
@@ -49,7 +49,7 @@ public class OdometerProblem {
 		
 		int numOfDigits = Integer.parseInt(args[1]);
 		Odometer odometer = new Odometer(numOfDigits);
-		System.out.println(odometer.getAllValues());
+		System.out.println(getAllValues(Odometer));
 	}
 
 }
