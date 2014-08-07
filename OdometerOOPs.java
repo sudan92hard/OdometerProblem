@@ -1,5 +1,8 @@
+package odometerproblem;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 class Odometer{
 	public ArrayList<Digit> digits;
@@ -50,14 +53,21 @@ class Odometer{
 
 		Integer number;
 		number = odometerToNumber(digits,this.numOfDigits);
-		number++;
-
+                number++;
+                
+                Integer minValue = odometerToNumber(this.getMinValue(this.numOfDigits), this.numOfDigits);
 		Integer maxValue = odometerToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits);
 
-		while(!isAscendingCondition(numberToDigits(number)) && number != maxValue)
+		while(!isAscendingCondition(numberToDigits(number)))
 		{
-			number++;
+                    number++;
+                    
+                    if(number >= maxValue)
+                    {
+                        number = minValue;
+                    }
 		}
+               
 		digits = new ArrayList<Digit >(numberToDigits(number));
 
 		return digits;
@@ -117,20 +127,30 @@ public class OdometerProblem {
 
 
 	public static void main(String[] args) {
-
-		int numOfDigits = 5;
-		Odometer odometer = new Odometer(numOfDigits);
-		for(Digit d: odometer.digits)
-		{
-			System.out.print(d.getValue());
-		}
-		System.out.println();
+                System.out.println("Number of digits : ");
+                Scanner sc = new Scanner(System.in);
+                int numOfDigits = sc.nextInt();
 		
-		for(Digit d: odometer.getNextValue())
+                Odometer odometer = new Odometer(numOfDigits);
+
+		System.out.println("Number of odometer values : ");
+                Scanner s = new Scanner(System.in);
+                int printList = s.nextInt();
+                
+                for(Digit d: odometer.digits)
 		{
 			System.out.print(d.getValue());
 		}
-		System.out.println();
+                System.out.println();
+                while(printList != 0)
+                {
+                    for(Digit d: odometer.getNextValue())
+                    {
+                        System.out.print(d.getValue());
+                    }
+                    System.out.println();
+                    printList--;
+                }
 
 	}
 
