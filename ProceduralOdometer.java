@@ -58,4 +58,41 @@ public class ProceduralOdometer {
 		}
 		return readings;
 	}
+	
+	public static String getNextDistance(String distance)
+	{
+		/*if(!isValidDistance(distance))
+			return "Invalid String";
+		*/
+		
+		/*if(distance.equals(getMaximumDistance(distance)))
+			return "";
+		*/
+		
+		int numOfDigits = distance.length();
+		char[] charArrayDistance = distance.toCharArray();
+		
+		if(charArrayDistance[numOfDigits - 1] - '0' < 9)
+		{
+			charArrayDistance[numOfDigits - 1] += 1;
+			//System.out.println(new String(charArrayDistance));
+			return new String(charArrayDistance);
+		}
+		
+		for(int i = numOfDigits - 1 ; i >= 0 ; i--)
+		{
+			if(charArrayDistance[i] - charArrayDistance[i - 1] > 1)
+			{
+				charArrayDistance[i - 1] += 1;
+				for(int j = i ; j < numOfDigits ; j++)
+				{
+					charArrayDistance[j] = (char) (charArrayDistance[j-1] + 1);
+				}
+				break;	
+			}
+			
+		}
+		//System.out.println(new String(charArrayDistance));
+		return new String(charArrayDistance);
+	}
 }
