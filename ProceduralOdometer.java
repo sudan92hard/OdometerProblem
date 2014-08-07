@@ -87,10 +87,10 @@ public class ProceduralOdometer {
         
         static String getNthDistance(String startReading, int N)
         {
-             String reading;            
+             String reading = startReading;            
              while(N != 0)
              {
-                 reading = getNextReading(startReading);
+                 reading = getNextReading(reading);
                  N--;
              }
             return reading;
