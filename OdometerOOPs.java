@@ -7,10 +7,14 @@ import java.util.Scanner;
 class Odometer{
 	public ArrayList<Digit> digits;
 	int numOfDigits;
+        Integer minValue;
+        Integer maxValue;
 
 	Odometer(int numOfDigits ){
 		this.numOfDigits = numOfDigits;
 		digits = getMinValue(numOfDigits);
+                minValue = odometerToNumber(this.getMinValue(this.numOfDigits), this.numOfDigits);
+		maxValue = odometerToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits);
 	}
 
 	boolean isAscendingCondition(ArrayList<Digit > digits){
@@ -54,9 +58,6 @@ class Odometer{
 		Integer number;
 		number = odometerToNumber(digits,this.numOfDigits);
                 number++;
-                
-                Integer minValue = odometerToNumber(this.getMinValue(this.numOfDigits), this.numOfDigits);
-		Integer maxValue = odometerToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits);
 
 		while(!isAscendingCondition(numberToDigits(number)))
 		{
@@ -71,7 +72,6 @@ class Odometer{
 		digits = new ArrayList<Digit >(numberToDigits(number));
 
 		return digits;
-
 	}
 
 	ArrayList<Digit> numberToDigits(Integer number){
@@ -136,7 +136,7 @@ public class OdometerProblem {
 		System.out.println("Number of odometer values : ");
                 Scanner s = new Scanner(System.in);
                 int printList = s.nextInt();
-                
+               
                 for(Digit d: odometer.digits)
 		{
 			System.out.print(d.getValue());
