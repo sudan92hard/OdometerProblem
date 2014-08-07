@@ -25,10 +25,20 @@ class Odometer{
 	
 	ArrayList<Digit> getMinValue(int numOfDigits){
 		
+		ArrayList<Digit> dgt = new ArrayList<Digit>();
+		for ( int i = 0; i < numOfDigits ; i++){
+			Digit d = new Digit(i);
+			dgt.add(d);
+		}
+		return dgt;
 	}
 		
 	ArrayList<Digit > getMaxValue(int numOfDigits){
-		
+		ArrayList<Digit> dgt = new ArrayList<Digit>();
+		int j = 9;
+		for ( int i = 0; i < numOfDigits ; i++){
+			Digit d = new Digit(j--);
+			dgt.add(d);
 	}
 	
 	ArrayList<Digit> getNextValue(){
