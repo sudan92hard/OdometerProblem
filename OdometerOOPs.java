@@ -34,26 +34,27 @@ class Odometer{
 		return dgt;
 	}
 		
-		ArrayList<Digit > getMaxValue(int numOfDigits){
+	ArrayList<Digit > getMaxValue(int numOfDigits){
 		ArrayList<Digit> dgt = new ArrayList<Digit>();
 		int j = 9;
 		for ( int i = 0; i < numOfDigits ; i++){
 			Digit d = new Digit(j--);
 			dgt.add(d);
-			}
-		Collections.reverse(dgt);
-		return dgt;
+		}
 		
-
+		Collections.reverse(dgt);
+		return dgt; 
 	}
-	
 	
 	ArrayList<Digit> getNextValue(){
 		
 		Integer number;
 		number = digitToNumber(digits,this.numOfDigits);
 		number++;
-		while(!isAscendingCondition(numberToDigit(number)) && number != digitToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits))
+		
+		Integer maxValue = digitToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits);
+		
+		while(!isAscendingCondition(numberToDigit(number)) && number != maxValue)
 		{
 			number++;
 		}
@@ -92,9 +93,28 @@ class Odometer{
 			number = number * 10 + dgt.getValue();
 		}
 		
+		//System.out.println(number);
+		
 		return number;
 		
 	}
+	
+	/*public void printList(){
+		
+		Integer number1 = new Integer(digitToNumber(this.getMinValue(numOfDigits),this.numOfDigits));
+		Integer maxValue = new Integer(digitToNumber(this.getMaxValue(numOfDigits), this.numOfDigits));
+		
+		while(number1 != maxValue && )
+		{
+			number1 = this.digitToNumber(nextValue, this.numOfDigits);
+			
+			for(Digit d: nextValue)
+			{
+				System.out.print(d.getValue());
+			}
+			System.out.println();
+		}
+	}*/
 	
 }
 
@@ -119,20 +139,20 @@ public class OdometerProblem {
 	
 	public static void main(String[] args) {
 		
-		//int numOfDigits = Integer.parseInt(args[1]);
-		int numOfDigits = 4;
+		int numOfDigits = 5;
 		Odometer odometer = new Odometer(numOfDigits);
-		//System.out.println(odometer.digits.toString());
 		for(Digit d: odometer.digits)
 		{
 			System.out.print(d.getValue());
 		}
 		System.out.println();
+		//odometer.printList();
 		for(Digit d: odometer.getNextValue())
 		{
 			System.out.print(d.getValue());
 		}
 		System.out.println();
+
 	}
 
 }
