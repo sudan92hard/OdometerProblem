@@ -1,23 +1,7 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 public class ProceduralOdometer {
-
-	public static void main(String args[]){
-		int digits = Integer.parseInt(args[1]);
-		String minimunDistance = getMinimunDistance(digits);
-		String maximumDistance = getMaximumDistance(digits);
-		String nextDistance = getNextDistance(minimumDistance);
-		ArrayList< String > = getListOfDistance(minimumDistance,maximumDistance);
-		List<String> readingsList = getReadingsUptoNKm(String startReading, int numOfReading);
-	}
-	
 	public static boolean isValidDistance(String number){
 		for(int i = 0; i < number.length() - 1; i++){
 			if(number.charAt(i) >= number.charAt(i + 1))
@@ -49,17 +33,8 @@ public class ProceduralOdometer {
 		}		
 		return number;
 	}
-	public static List<String> getReadingsUptoNKm(String startReading, int numOfReading){
-		List<String> readings = new ArrayList<String>();
-		for(int i = 0; i < numOfReading; i++){
-			readings.add(startReading);
-			startReading = getNextReading(startReading);
-			
-		}
-		return readings;
-	}
-	
-	public static String getNextDistance(String distance)
+
+	public static String getNextReading(String distance)
 	{
 		int numOfDigits = distance.length();
 		char[] charArrayDistance = distance.toCharArray();
@@ -71,7 +46,7 @@ public class ProceduralOdometer {
 			return new String(charArrayDistance);
 		}
 		
-		for(int i = numOfDigits - 1 ; i >= 0 ; i--)
+		for(int i = numOfDigits - 1 ; i > 0 ; i--)
 		{
 			if(charArrayDistance[i] - charArrayDistance[i - 1] > 1)
 			{
@@ -84,7 +59,6 @@ public class ProceduralOdometer {
 			}
 			
 		}
-	
 		return new String(charArrayDistance);
 	}
 	
@@ -95,11 +69,21 @@ public class ProceduralOdometer {
              {
                  return readings;
              }
-             while(Integer.parseInt(startReading) <= Integer.parseInt(endReading)) 
+             while(!startReading.equals(endReading)) 
              {
                  readings.add(startReading);
                  startReading = getNextReading(startReading);
              }
+             readings.add(endReading);
             return readings;
         }
+	
+	public static void main(String args[]){
+		int digits = 4;
+		String minimumDistance = getMinimumDistance(digits);
+		String maximumDistance = getMaximumDistance(digits);
+		String nextDistance = getNextReading(minimumDistance);
+		List< String > readingList = getListOfReadings(minimumDistance,maximumDistance);
+		System.out.println(readingList);
+	}	
 }
