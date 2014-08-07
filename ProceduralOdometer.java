@@ -16,4 +16,12 @@ public class ProceduralOdometer {
 		int nextDistance = getNextDistance(minimumDistance);
 		ArrayList< Integer > = getListOfDistance(minimumDistance,maximumDistance);
 	}
+	
+	public static boolean isValidDistance(String number){
+		for(int i = 0; i < number.length() - 1; i++){
+			if(number.charAt(i) >= number.charAt(i + 1))
+				return false;
+		}
+		return true;
+	}
 }
