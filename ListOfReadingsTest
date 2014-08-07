@@ -1,0 +1,37 @@
+public class ListOfReadingsTest{
+
+     ArrayList<String> startReading = new ArrayList<String>();
+     ArrayList<String> endReading = new ArrayList<String>();
+     ArrayList<ArrayList<String>> expectedReadings = new ArrayList<ArrayList<String>>();
+         
+     @Before
+     static void readRangeInput()
+     {
+         Scanner sc = new Scanner(new FileReader("inputRange.txt"));
+         String line;
+         ArrayList<String> startReading = new ArrayList<String>();
+         ArrayList<String> endReading = new ArrayList<String>();
+         ArrayList<ArrayList<String>> expectedReadings = new ArrayList<ArrayList<String>>();
+         while(sc.hasNext())
+         {
+             line = sc.nextLine();
+             String lineToken[] = line.split(" ");
+             startReading.add(lineToken[0]);
+             endReading.add(lineToken[1]);
+             string reading[] = lineToken[2].split(","); 
+             Collection.addAll(readingList, reading);
+             expectedReadings.add(readingList);
+         }
+     }
+     @Test
+     static void getListOfReadingsTest()
+     {
+        List<String> listOfReading = new ArrayList<String>();
+         for(int i = 0; i < startReading.size(); i++)
+         {
+              listOfReading = getListOfReadings(startReading.get(j),endReading.get(i));
+              for(int j = 0; j < expectedReadings.size(); j++)
+              assertEquals(listOfReading.get(j), expectedReadings.get(j));
+          }
+     }
+}
