@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 class Odometer{
 	ArrayList<Digit> digits;
@@ -39,13 +40,17 @@ class Odometer{
 		for ( int i = 0; i < numOfDigits ; i++){
 			Digit d = new Digit(j--);
 			dgt.add(d);
+		}
+		
+		Collections.reverse(dgt);
+		return dgt; 
 	}
 	
 	ArrayList<Digit> getNextValue(){
 		
 		Integer number;
 		number = digitToNumber(digits,this.numOfDigits);
-		while(!isAscendingCondition(numberToDigit(number)))
+		while(!isAscendingCondition(numberToDigit(number)) && number != digitToNumber(this.getMaxValue(this.numOfDigits), this.numOfDigits))
 		{
 			number ++;
 			digits = numberToDigit(number);
@@ -55,7 +60,7 @@ class Odometer{
 		
 	}
 	
-	ArrayList<Digit> numberToDigit(Integer number,int numOfDigits){
+	ArrayList<Digit> numberToDigit(Integer number){
 		
 		ArrayList<Digit> digit = new ArrayList<Digit>();
 		while(number > 0){
@@ -66,7 +71,6 @@ class Odometer{
 			
 		}
 		Collections.reverse(digit);
-		
 		return digit;
 	}
 	
@@ -108,7 +112,7 @@ public class OdometerProblem {
 		
 		int numOfDigits = Integer.parseInt(args[1]);
 		Odometer odometer = new Odometer(numOfDigits);
-		System.out.println(getAllValues(Odometer));
+		//System.out.println(getAllValues(Odometer));
 	}
 
 }
