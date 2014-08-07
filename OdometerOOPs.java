@@ -40,12 +40,13 @@ class Odometer{
 class Digit{
 	int value;
 	Digit(int value){
-		this.value = value;
+		this.value = value % 10;
 	}
 	
 	int getValue(){
 		return value;
 	}
+	
 	void setValue(int value){
 		this.value = value;
 	}
