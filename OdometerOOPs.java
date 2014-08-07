@@ -25,7 +25,10 @@ class Odometer{
             return s;
         }
         
-	boolean isAscendingCondition(ArrayList<Digit > digits){
+	void setDigits(ArrayList<Digit> d){
+            digits = d;
+        }
+        boolean isAscendingCondition(ArrayList<Digit > digits){
 
 		for(int i = 0; i < digits.size() - 1; i++ )
 		{
@@ -66,7 +69,7 @@ class Odometer{
 		Integer number;
 		number = odometerToNumber(digits);
                 number++;
-
+                
 		while(!isAscendingCondition(numberToOdometer(number)))
 		{
                     number++;
@@ -76,12 +79,13 @@ class Odometer{
                         number = minValue;
                     }
 		}
+                
                
 		digits = new ArrayList<Digit >(numberToOdometer(number));
 
 		return digits;
 	}
-
+        
 	ArrayList<Digit> numberToOdometer(Integer number){
 
 		ArrayList<Digit> digit = new ArrayList<Digit>();
@@ -138,15 +142,21 @@ public class OdometerProblem {
                 System.out.println("Number of digits : ");
                 Scanner sc = new Scanner(System.in);
                 int numOfDigits = sc.nextInt();
+                
+                System.out.println("Odometer start value : ");
 		
                 Odometer odometer = new Odometer(numOfDigits);
-
+                int odometerVal = sc.nextInt();
+                odometer.setDigits(odometer.numberToOdometer(odometerVal));
+                
 		System.out.println("Number of odometer values : ");
                 Scanner s = new Scanner(System.in);
                 int printList = s.nextInt();
+                
                 while(printList != 0)
                 {
                     odometer.getNextValue();
+                    odometerVal++;
                     System.out.println(odometer);
                     printList--;
                 }
